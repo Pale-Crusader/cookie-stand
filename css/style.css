@@ -1,0 +1,10 @@
+body {
+    background-color: blue;
+}
+article {
+    width: fit-content;
+    display: inline-block;
+    margin: 5px;
+    background-color: white;
+    border-radius: 20px;
+}
