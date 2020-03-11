@@ -2,7 +2,7 @@ body {
     background-color: blue;
 }
 article {
-    width: 15%;
+    width: fit-content;
     display: inline-block;
     margin: 5px;
     background-color: white;

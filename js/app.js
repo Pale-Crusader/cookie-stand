@@ -21,12 +21,12 @@ StoreBranch.prototype.runningCustomerTotal = 0;
 StoreBranch.prototype.calculateAllDaySales = function() {
 
 	var hourlyVariance = (this.maxCustomer - this.minCustomer);
-	var actualHourlyCustomer = (Math.floor(Math.random() * hourlyVariance) + 1 + this.minCustomer);
-	var actualHourlyCookie = Math.floor(this.averageCookie * actualHourlyCustomer);
-	var branchHourlyArray = [actualHourlyCustomer,actualHourlyCookie];
 	// console.log(branchHourlyArray);
 
 	for (var index = 0; index < this.numberOfHoursOpen.length; index++) {
+		var actualHourlyCustomer = (Math.floor(Math.random() * hourlyVariance) + 1 + this.minCustomer);
+		var actualHourlyCookie = Math.floor(this.averageCookie * actualHourlyCustomer);
+		var branchHourlyArray = [actualHourlyCustomer,actualHourlyCookie];
 		this.customerTotalArray.push(branchHourlyArray[0]);
 		this.runningCustomerTotal = (this.runningCustomerTotal + branchHourlyArray[0]);
 		this.cookieTotalArray.push(branchHourlyArray[1]);
@@ -39,85 +39,83 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 	switch (index) {
 		case 0:
 			var branchParent = document.getElementById(this.branchID);
-			var firstHour = document.createElement('li');
-			firstHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var firstHour = document.createElement('td');
+			firstHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(firstHour);
 			break;
 		case 1:
-			var secondHour = document.createElement('li');
-			secondHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var secondHour = document.createElement('td');
+			secondHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(secondHour);
 			break;
 		case 2:
-			var thirdHour = document.createElement('li');
-            thirdHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var thirdHour = document.createElement('td');
+            thirdHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(thirdHour);
 			break;
 		case 3:
-			var fourthHour = document.createElement('li');
-			fourthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var fourthHour = document.createElement('td');
+			fourthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(fourthHour);
 			break;
 		case 4:
-			var fifthHour = document.createElement('li');
-			fifthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var fifthHour = document.createElement('td');
+			fifthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(fifthHour);
 			break;
 		case 5:
-			var sixthHour = document.createElement('li');
-			sixthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var sixthHour = document.createElement('td');
+			sixthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(sixthHour);
 			break;
 		case 6:
-			var seventhHour = document.createElement('li');
-			seventhHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var seventhHour = document.createElement('td');
+			seventhHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(seventhHour);
 			break;
 		case 7:
-			var eigthHour = document.createElement('li');
-			eigthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var eigthHour = document.createElement('td');
+			eigthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(eigthHour);
 			break;
 		case 8:
-			var ninthHour = document.createElement('li');
-			ninthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var ninthHour = document.createElement('td');
+			ninthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(ninthHour);
 			break;
 		case 9:
-			var tenthHour = document.createElement('li');
-			tenthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var tenthHour = document.createElement('td');
+			tenthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(tenthHour);
 			break;
 		case 10:
-			var eleventhHour = document.createElement('li');
-			eleventhHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var eleventhHour = document.createElement('td');
+			eleventhHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(eleventhHour);
 			break;
 		case 11:
-			var twelthHour = document.createElement('li');
-			twelthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var twelthHour = document.createElement('td');
+			twelthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(twelthHour);
 			break;
 		case 12:
-			var thirteenthHour = document.createElement('li');
-			thirteenthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var thirteenthHour = document.createElement('td');
+			thirteenthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(thirteenthHour);
 			break;
 		case 13:
-			var fourteenthHour = document.createElement('li');
-			fourteenthHour.textContent = (this.numberOfHoursOpen[index] + ' ' + branchHourlyArray[1] + ' cookies');
+			var fourteenthHour = document.createElement('td');
+			fourteenthHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(tenthHour);
-			var displayTotalElement = document.createElement('li');
-			displayTotalElement.textContent = ('Total: ' + this.runningCookieTotal + ' cookies');
+			var displayTotalElement = document.createElement('td');
+			displayTotalElement.textContent = (' ' + this.runningCookieTotal);
 			branchParent.appendChild(displayTotalElement);
 			break;
 		default:
-			console.log(displayTotalElement);
+			console.log('The index is ' + index);
 		}
 	}
 }
-
-
 
 var seattleBranch = new StoreBranch('Seattle', 23, 65, 6.3, 'branch1');
 var tokyoBranch = new StoreBranch('Tokyo', 3, 24, 1.2, 'branch2');
