@@ -8,3 +8,26 @@ article {
     background-color: white;
     border-radius: 20px;
 }
+table {
+    background-color: wheat;
+}
+
+#branch1 td:nth-of-type(odd) {
+    background-color: lightskyblue;
+}
+
+#branch2 td:nth-of-type(even) {
+    background-color: lightskyblue;
+}
+
+#branch3 td:nth-of-type(odd) {
+    background-color: lightskyblue;
+}
+
+#branch4 td:nth-of-type(even) {
+    background-color: lightskyblue;
+}
+
+#branch5 td:nth-of-type(odd) {
+    background-color: lightskyblue;
+}

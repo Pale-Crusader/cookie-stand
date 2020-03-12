@@ -12,8 +12,8 @@ function StoreBranch(name, minCust, maxCust, avgCookie, branchID) {
 }
 
 StoreBranch.prototype.numberOfHoursOpen = ['6 am','7 am','8 am','9 am','10 am','11 am','12 pm','1 pm','2 pm','3 pm','4 pm','5 pm','6 pm','7 pm'];
-StoreBranch.prototype.customerTotalArray = [];
-StoreBranch.prototype.cookieTotalArray = [];
+StoreBranch.prototype.customersEachHourArray = [];
+StoreBranch.prototype.cookiesEachHourArray = [];
 StoreBranch.prototype.runningCookieTotal = 0;
 StoreBranch.prototype.runningCustomerTotal = 0;
 
@@ -27,14 +27,12 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 		var actualHourlyCustomer = (Math.floor(Math.random() * hourlyVariance) + 1 + this.minCustomer);
 		var actualHourlyCookie = Math.floor(this.averageCookie * actualHourlyCustomer);
 		var branchHourlyArray = [actualHourlyCustomer,actualHourlyCookie];
-		this.customerTotalArray.push(branchHourlyArray[0]);
+
+		this.customersEachHourArray.push(branchHourlyArray[0]);
 		this.runningCustomerTotal = (this.runningCustomerTotal + branchHourlyArray[0]);
-		this.cookieTotalArray.push(branchHourlyArray[1]);
+		this.cookiesEachHourArray.push(branchHourlyArray[1]);
 		this.runningCookieTotal = (this.runningCookieTotal + branchHourlyArray[1]);
-		// console.log('this.customerTotalArray' + this.customerTotalArray);
-		// console.log('this.runningCustomerTotal' + this.runningCustomerTotal);
-		// console.log('cookie running total array' + cookieTotalArray);
-		// console.log('cookie total' + this.runningCookieTotal);
+		console.log('This ' + this.name + '\'s cookiesEachHourArray is ' + this.cookiesEachHourArray + ' at index number: '+ index + ' and this is what was added this loop: ' + branchHourlyArray[1]);
 
 	switch (index) {
 		case 0:
@@ -74,9 +72,9 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 			branchParent.appendChild(seventhHour);
 			break;
 		case 7:
-			var eigthHour = document.createElement('td');
-			eigthHour.textContent = (' ' + branchHourlyArray[1]);
-			branchParent.appendChild(eigthHour);
+			var eighthHour = document.createElement('td');
+			eighthHour.textContent = (' ' + branchHourlyArray[1]);
+			branchParent.appendChild(eighthHour);
 			break;
 		case 8:
 			var ninthHour = document.createElement('td');
@@ -94,9 +92,9 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 			branchParent.appendChild(eleventhHour);
 			break;
 		case 11:
-			var twelthHour = document.createElement('td');
-			twelthHour.textContent = (' ' + branchHourlyArray[1]);
-			branchParent.appendChild(twelthHour);
+			var twelfthHour = document.createElement('td');
+			twelfthHour.textContent = (' ' + branchHourlyArray[1]);
+			branchParent.appendChild(twelfthHour);
 			break;
 		case 12:
 			var thirteenthHour = document.createElement('td');
