@@ -140,36 +140,11 @@ var parisBranch = new StoreBranch('Paris', 20, 38, 2.3, 'branch4');
 var limaBranch = new StoreBranch('Lima', 2, 16, 4.6, 'branch5');
 
 
-// function handleForm(event) {
-// 	event.preventDefault();
-// 	var salesTable = document.getElementById('sales');
-// 	if (name !== '' && avgCookie > 0 && maxCust > minCust) {
-// 		var name = event.target.name.value;
-// 		var minCust = event.target.minCust.value;
-// 		var maxCust = event.target.maxCust.value;
-// 		var avgCookie = event.target.avgCookie.value;
-// 		var branchID = ('branch' + ( listOfBranches.length + 2 ));
-// 		var newBranch = new StoreBranch(name, minCust, maxCust, branchID);
-// 		console.log(newBranch);
-// 		var newRowParent = document.createElement('tr');
-// 		var dynamicRowID = document.createAttribute('id');
-// 		dynamicRowID.value = branchID;
-// 		newRowParent.setAttributeNode(dynamicRowID);
-// 		salesTable.appendChild(newRowParent);
-// 		var newTitleCell = document.createElement('td');
-// 		newTitle.textContent = (' ' + name);
-// 		newRowParent.appendChild(newTitleCell);
-// 		newBranch.calculateAllDaySales();
-// 	} else {
-// 		alert('Please make sure the form is filled out with name and appropriate numerical value.');
-// 	}
-// }
-
-console.log(seattleBranch);
-console.log(tokyoBranch);
-console.log(dubaiBranch);
-console.log(parisBranch);
-console.log(limaBranch);
+// console.log(seattleBranch);
+// console.log(tokyoBranch);
+// console.log(dubaiBranch);
+// console.log(parisBranch);
+// console.log(limaBranch);
 seattleBranch.calculateAllDaySales();
 tokyoBranch.calculateAllDaySales();
 dubaiBranch.calculateAllDaySales();
