@@ -115,23 +115,34 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 		}
 	}
 }
-// function displayColumnTotal(listOfBranches) {
+function displayColumnTotal() {
 	
-// 	var columnTotalingArray = listOfBranches;
-// 	vat displayColumnTotalElement = document.getElementById("displayColummTotals")
+	var columnTotalingArray = listOfBranches;
+	var displayColumnTotalElement = document.getElementsByClassName("displayColumnTotals");
+	console.log('get displayColumTotalElement Row 1st time' + displayColumnTotalElement);
+	var saleTableElement = document.getElementById("sales");
+	console.log('get salesTable 1st time' + saleTableElement);
+	var displayHourlyTotalIdAttribute = document.createAttribute("class");
+	var displayHourlyTotalIdAttributeValue = "displayColumnTotals";
+	displayColumnTotalElement.parentNode.removeChild(displayColumnTotalElement);
+	console.log('get displayColumTotalElement Row 2nd time' + displayColumnTotalElement);
+	displayColumnTotalElement = document.createElement("tr");
+	displayColumnTotalElement.setAttribute(displayHourlyTotalIdAttribute, displayHourlyTotalIdAttributeValue);
+	saleTableElement.appendChild(displayColumnTotalElement);
 
-// 	for (var eachHour = 0; listOfHours.length; 
-// 		var columnRunningSum = 0;
-// 		for (var columnIndex = 0; columnIndex < listOfBranches.length; columnIndex++) {
-// 			ru
+
+	// for (var eachHour = 0; listOfHours.length; eachHour++)
+	// 	var columnRunningSum = 0;
+	// 	for (var columnIndex = 0; columnIndex < columnTotalingArray.length; columnIndex++) {
+			
 			
 		
-// 	var columnTotalEl = document.createElement('td');
-// 	columnTotalEl.textContent = (' ' + this.runningCookieTotal);
-// 	branchParent.appendChild(displayTotalElement);
-// 	}
+	// var columnTotalEl = document.createElement('td');
+	// columnTotalEl.textContent = (' ' + this.runningCookieTotal);
+	// branchParent.appendChild(displayTotalElement);
+	// }
 
-// }
+}
 
 var seattleBranch = new StoreBranch('Seattle', 23, 65, 6.3, 'branch1');
 var tokyoBranch = new StoreBranch('Tokyo', 3, 24, 1.2, 'branch2');
@@ -151,7 +162,7 @@ dubaiBranch.calculateAllDaySales();
 parisBranch.calculateAllDaySales();
 limaBranch.calculateAllDaySales();
 
-
+displayColumnTotal();
 // var createNewStoreForm = document.getElementById('makeBranchForm');
 
 // createNewStoreForm.addEventListener('submit', handleForm);
