@@ -10,8 +10,8 @@
     </header>
     <main>
         <article class="pagesMainArticle">
-            <table id="sales">
-                <tr>
+            <table>
+                <th>
                     <td></td>
                     <td>6 am</td>
                     <td>7 am</td>
@@ -28,26 +28,32 @@
                     <td>6 pm</td>
                     <td>7 pm</td>
                     <td>Total</td>
-                </tr>>               
-                <tr id="branch1">
-                    <td>Seattle</td>
-                </tr>>
-                <tr id="branch2">
-                    <td>Tokyo</td>
-                </tr>
-                <tr id="branch3">
-                    <td>Dubai</td>
-                </tr>
-                <tr id="branch4">
-                    <td>Paris</td>
-                </tr>
-                <tr id="branch5">
-                    <td>Lima</td>
-                </tr>
-                <tr id="displayColumnTotals">
-                    <td>test</td>
-                </tr>
+                </th>
+                <tbody id="sales">
+
+                </tbody>
+                <tfoot class="displayColumnTotalElement">
+
+                </tfoot>
         </table>
+        <section>
+            <form id="makeBranchForm">
+                <fieldset>
+                    <legend>Store</legend>
+                    <input type="text" placeholder="Name of Store Branch" name="branch" ></input>
+                </fieldset>
+                <fieldset>
+                    <legend>Customers</legend>
+                    <input type="text" placeholder="Minimum Customers Per Hour" name="min"></input>
+                    <input type="text" placeholder="Maximum Customers Per Hour" name="max"></input>
+                </fieldset>
+                <fieldset>
+                    <legend>Cookies</legend>
+                    <input type="text" placeholder="Average Coomies Per Customers" name="average"></input>
+                </fieldset>
+                <input type="submit">
+            </form>
+        </section>
         </article>
     </main>
     <footer>

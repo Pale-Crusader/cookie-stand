@@ -1,6 +1,7 @@
 'strict';
 var listOfBranches =[];
 var listOfHours =['6 am','7 am','8 am','9 am','10 am','11 am','12 pm','1 pm','2 pm','3 pm','4 pm','5 pm','6 pm','7 pm'];
+var salesTableEl = document.getElementById('sales');
 
 // name is a string of the name, minCust is minimum _number_ of customers, maxCust is maximum _number_ of customers, branchID is the HTML parent ID
 function StoreBranch(name, minCust, maxCust, avgCookie, branchID) {
@@ -18,9 +19,37 @@ StoreBranch.prototype.cookiesEachHourArray = [];
 StoreBranch.prototype.runningCookieTotal = 0;
 StoreBranch.prototype.runningCustomerTotal = 0;
 
+function displayColumnTotal() {
+
+	var columnTotalingArray = listOfBranches;
+	var displayColumnTotalElement = document.getElementsByClassName('displayColumnTotals');
+	console.log('get displayColumTotalElement Row 1st time' + displayColumnTotalElement);
+	var saleTableElement = document.getElementById('sales');
+	displayColumnTotalElement = document.createElement('tr');
+	displayColumnTotalElement.innerHTML = '';
+	var totalColumnCell = document.createElement('td');
+	totalColumnCell.textContent = 'Hourly Totals';
+	displayColumnTotalElement.appendChild(totalColumnCell);
+	displayColumnTotalElement.setAttribute('class', 'displayColumnTotals');
+	saleTableElement.appendChild(displayColumnTotalElement);
+
+	for (var eachHour = 0; eachHour < listOfHours.length; eachHour++) {
+		var columnRunningSum = 0;
+		for (var columnIndex = 0; columnIndex < columnTotalingArray.length; columnIndex++) {
+			columnRunningSum = (columnRunningSum + columnTotalingArray[columnIndex].cookiesEachHourArray[eachHour]);
+		}
+		var columnTotalEl = document.createElement('td');
+		columnTotalEl.textContent = (' ' + columnRunningSum);
+		displayColumnTotalElement.appendChild(columnTotalEl);
+		columnRunningSum = 0;
+	}
+}
+
 
 StoreBranch.prototype.calculateAllDaySales = function() {
-
+	var branchParent = document.createElement('tr');
+	branchParent.setAttribute('id', this.branchID);
+	salesTableEl.appendChild(branchParent);
 	var hourlyVariance = (this.maxCustomer - this.minCustomer);
 	// console.log(branchHourlyArray);
 
@@ -33,11 +62,12 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 		this.runningCustomerTotal = (this.runningCustomerTotal + branchHourlyArray[0]);
 		this.cookiesEachHourArray.push(branchHourlyArray[1]);
 		this.runningCookieTotal = (this.runningCookieTotal + branchHourlyArray[1]);
-		// console.log('This ' + this.name + '\'s cookiesEachHourArray is ' + this.cookiesEachHourArray + ' at index number: '+ index + ' and this is what was added this loop: ' + branchHourlyArray[1]);
-
+		
 	switch (index) {
 		case 0:
-			var branchParent = document.getElementById(this.branchID);
+			var branchName = document.createElement('td');
+			branchName.textContent = (' ' + this.name);
+			branchParent.appendChild(branchName);
 			var firstHour = document.createElement('td');
 			firstHour.textContent = (' ' + branchHourlyArray[1]);
 			branchParent.appendChild(firstHour);
@@ -115,34 +145,6 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 		}
 	}
 }
-function displayColumnTotal() {
-	
-	var columnTotalingArray = listOfBranches;
-	var displayColumnTotalElement = document.getElementsByClassName("displayColumnTotals");
-	console.log('get displayColumTotalElement Row 1st time' + displayColumnTotalElement);
-	var saleTableElement = document.getElementById("sales");
-	console.log('get salesTable 1st time' + saleTableElement);
-	var displayHourlyTotalIdAttribute = document.createAttribute("class");
-	var displayHourlyTotalIdAttributeValue = "displayColumnTotals";
-	displayColumnTotalElement.parentNode.removeChild(displayColumnTotalElement);
-	console.log('get displayColumTotalElement Row 2nd time' + displayColumnTotalElement);
-	displayColumnTotalElement = document.createElement("tr");
-	displayColumnTotalElement.setAttribute(displayHourlyTotalIdAttribute, displayHourlyTotalIdAttributeValue);
-	saleTableElement.appendChild(displayColumnTotalElement);
-
-
-	// for (var eachHour = 0; listOfHours.length; eachHour++)
-	// 	var columnRunningSum = 0;
-	// 	for (var columnIndex = 0; columnIndex < columnTotalingArray.length; columnIndex++) {
-			
-			
-		
-	// var columnTotalEl = document.createElement('td');
-	// columnTotalEl.textContent = (' ' + this.runningCookieTotal);
-	// branchParent.appendChild(displayTotalElement);
-	// }
-
-}
 
 var seattleBranch = new StoreBranch('Seattle', 23, 65, 6.3, 'branch1');
 var tokyoBranch = new StoreBranch('Tokyo', 3, 24, 1.2, 'branch2');
@@ -150,19 +152,26 @@ var dubaiBranch = new StoreBranch('Dubai', 11, 38, 3.7, 'branch3');
 var parisBranch = new StoreBranch('Paris', 20, 38, 2.3, 'branch4');
 var limaBranch = new StoreBranch('Lima', 2, 16, 4.6, 'branch5');
 
-
-// console.log(seattleBranch);
-// console.log(tokyoBranch);
-// console.log(dubaiBranch);
-// console.log(parisBranch);
-// console.log(limaBranch);
 seattleBranch.calculateAllDaySales();
 tokyoBranch.calculateAllDaySales();
 dubaiBranch.calculateAllDaySales();
 parisBranch.calculateAllDaySales();
 limaBranch.calculateAllDaySales();
 
-displayColumnTotal();
-// var createNewStoreForm = document.getElementById('makeBranchForm');
 
-// createNewStoreForm.addEventListener('submit', handleForm);
+var createNewStoreForm = document.getElementById('makeBranchForm');
+displayColumnTotal();
+function addNewStore(event){
+    event.preventDefault();
+    var branch = String(event.target.branch.value);
+    var min = Number(event.target.min.value);
+    var max = Number(event.target.max.value);
+	var average = Number(event.target.average.value);
+	var branchid = ('branch' + (listOfBranches.length + 1));
+	new StoreBranch(branch,min,max,average,branchid).runningCookieTotal;
+	displayColumnTotal();
+}
+createNewStoreForm.addEventListener('submit', addNewStore);
+
+console.log(listOfBranches);
+
