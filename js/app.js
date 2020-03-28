@@ -9,38 +9,39 @@ function StoreBranch(name, minCust, maxCust, avgCookie, branchID) {
     this.minCustomer = minCust;
     this.maxCustomer = maxCust;
     this.averageCookie = avgCookie;
-    this.branchID = branchID;
+	this.branchID = branchID;
+	this.numberOfHoursOpen = listOfHours;
+	this.customersEachHourArray = [];
+	this.cookiesEachHourArray = [];
+	this.runningCookieTotal = 0;
+	this.runningCustomerTotal = 0;
+	this.calculateAllDaySales();
 	listOfBranches.push(this);
 }
-
-StoreBranch.prototype.numberOfHoursOpen = listOfHours;
-StoreBranch.prototype.customersEachHourArray = [];
-StoreBranch.prototype.cookiesEachHourArray = [];
-StoreBranch.prototype.runningCookieTotal = 0;
-StoreBranch.prototype.runningCustomerTotal = 0;
 
 function displayColumnTotal() {
 
 	var columnTotalingArray = listOfBranches;
-	var displayColumnTotalElement = document.getElementsByClassName('displayColumnTotals');
-	console.log('get displayColumTotalElement Row 1st time' + displayColumnTotalElement);
-	var saleTableElement = document.getElementById('sales');
-	displayColumnTotalElement = document.createElement('tr');
+	var displayColumnTotalElement = document.getElementById('displayColumnTotalElement');
 	displayColumnTotalElement.innerHTML = '';
+	var displayColumnTotalRow = document.createElement('tr');
 	var totalColumnCell = document.createElement('td');
 	totalColumnCell.textContent = 'Hourly Totals';
-	displayColumnTotalElement.appendChild(totalColumnCell);
-	displayColumnTotalElement.setAttribute('class', 'displayColumnTotals');
-	saleTableElement.appendChild(displayColumnTotalElement);
+	displayColumnTotalRow.appendChild(totalColumnCell);
+	displayColumnTotalRow.setAttribute('class', 'displayColumnTotals');
+	displayColumnTotalElement.appendChild(displayColumnTotalRow);
 
 	for (var eachHour = 0; eachHour < listOfHours.length; eachHour++) {
 		var columnRunningSum = 0;
 		for (var columnIndex = 0; columnIndex < columnTotalingArray.length; columnIndex++) {
 			columnRunningSum = (columnRunningSum + columnTotalingArray[columnIndex].cookiesEachHourArray[eachHour]);
+			console.log('columnTotalingArray[columnIndex] is : ' + JSON.stringify(columnTotalingArray[columnIndex]) + ' and ');
+			console.log('columnTotalingArray[columnIndex].cookiesEachHourArray[eachHour] is: ' + columnTotalingArray[columnIndex].cookiesEachHourArray[eachHour]);
+			console.log('eachHour: ' + eachHour + 'columnIndex: ' + columnIndex + ' columnRunningSum: ' + columnRunningSum);
 		}
 		var columnTotalEl = document.createElement('td');
 		columnTotalEl.textContent = (' ' + columnRunningSum);
-		displayColumnTotalElement.appendChild(columnTotalEl);
+		displayColumnTotalRow.appendChild(columnTotalEl);
 		columnRunningSum = 0;
 	}
 }
@@ -141,7 +142,6 @@ StoreBranch.prototype.calculateAllDaySales = function() {
 			branchParent.appendChild(displayTotalElement);
 			break;
 		default:
-			console.log('The index is ' + index);
 		}
 	}
 }
@@ -151,12 +151,6 @@ var tokyoBranch = new StoreBranch('Tokyo', 3, 24, 1.2, 'branch2');
 var dubaiBranch = new StoreBranch('Dubai', 11, 38, 3.7, 'branch3');
 var parisBranch = new StoreBranch('Paris', 20, 38, 2.3, 'branch4');
 var limaBranch = new StoreBranch('Lima', 2, 16, 4.6, 'branch5');
-
-seattleBranch.calculateAllDaySales();
-tokyoBranch.calculateAllDaySales();
-dubaiBranch.calculateAllDaySales();
-parisBranch.calculateAllDaySales();
-limaBranch.calculateAllDaySales();
 
 
 var createNewStoreForm = document.getElementById('makeBranchForm');
